@@ -1,0 +1,9 @@
+out/
+/tmp
+workspace.xml
+.gradle/
+build
+*.iml
+/.idea
+.DS_Store
+/build
