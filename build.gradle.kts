@@ -30,7 +30,7 @@ dependencies {
     implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
 
     implementation("com.h2database:h2:$h2Version")
-    implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.3.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.3.3")
     implementation("org.jetbrains.exposed:exposed-core:$exposedVersion")
     implementation("org.jetbrains.exposed:exposed-jdbc:$exposedVersion")
     implementation("org.jetbrains.exposed:exposed-java-time:$exposedVersion")
