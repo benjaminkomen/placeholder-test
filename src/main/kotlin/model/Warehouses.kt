@@ -33,4 +33,5 @@ data class Warehouse(
     val parkingTrailer: Boolean?,
     val fencedYard: Boolean?,
     val powerAmps: Int?,
+    val loadingBays: List<LoadingBay> = emptyList(),
 ) : Property()

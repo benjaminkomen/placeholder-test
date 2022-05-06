@@ -33,4 +33,5 @@ data class Office(
     val gym: Boolean?,
     val parking: Boolean?,
     val mailservice: Boolean?,
+    val meetingRooms: List<MeetingRoom> = emptyList(),
 ) : Property()

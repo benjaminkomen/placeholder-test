@@ -22,7 +22,7 @@ class PropertyService {
             .singleOrNull()
     }
 
-    private fun toProperty(row: ResultRow): Property {
+    private suspend fun toProperty(row: ResultRow): Property {
         if (row[Warehouses.square_footage] != null) {
             return Warehouse(
                 propertyId = row[Properties.property_id],
@@ -40,6 +40,7 @@ class PropertyService {
                 parkingTrailer = row[Warehouses.parking_trailer],
                 fencedYard = row[Warehouses.fenced_yard],
                 powerAmps = row[Warehouses.power_amps],
+                loadingBays = getLoadingBays(row[Properties.property_id])
             )
         } else if (row[Offices.capacity] != null) {
             return Office(
@@ -58,9 +59,48 @@ class PropertyService {
                 gym = row[Offices.gym],
                 parking = row[Offices.parking],
                 mailservice = row[Offices.mailservice],
+                meetingRooms = getMeetingRooms(row[Properties.property_id]),
             )
         } else {
-            TODO()
+            throw IllegalStateException("Property must either be a Warehouse or Office")
         }
+    }
+
+    private suspend fun getLoadingBays(propertyId: Int): List<LoadingBay> {
+        return dbQuery {
+            LoadingBays.select {
+                (LoadingBays.property_id eq propertyId)
+            }.map { toLoadingBay(it) }
+        }
+    }
+
+    private fun toLoadingBay(row: ResultRow): LoadingBay {
+        return LoadingBay(
+            bayId = row[LoadingBays.bay_id],
+            propertyId = row[LoadingBays.property_id],
+            truckLevel = row[LoadingBays.truck_level],
+            trailer53 = row[LoadingBays.trailer_53],
+            dockLock = row[LoadingBays.dock_lock],
+            leveler = row[LoadingBays.leveler],
+        )
+    }
+
+    private suspend fun getMeetingRooms(propertyId: Int): List<MeetingRoom> {
+        return dbQuery {
+            MeetingRooms.select {
+                (MeetingRooms.property_id eq propertyId)
+            }.map { toMeetingRoom(it) }
+        }
+    }
+
+    private fun toMeetingRoom(row: ResultRow): MeetingRoom {
+        return MeetingRoom(
+            roomId = row[MeetingRooms.room_id],
+            propertyId = row[MeetingRooms.property_id],
+            capacity = row[MeetingRooms.capacity],
+            squareFootage = row[MeetingRooms.square_footage],
+            avEquipment = row[MeetingRooms.av_equipment],
+            exclusive = row[MeetingRooms.exclusive],
+        )
     }
 }
