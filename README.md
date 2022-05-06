@@ -36,6 +36,9 @@ since it is more of an implementation detail of the database.
 The json response contains an additional attribute `type` which denotes whether the property is a warehouse or an office.
 This attribute can optionally be removed from the output, if required.
 
+A live demo is available via [Google Cloud Run](https://placeholder-test-fxyp3msj7a-ew.a.run.app).
+This was done by simply executing `gcloud run deploy placeholder-test --source .` (and fixing some stuff to make a working fat jar)
+
 ## Assignment instructions
 
 This test is designed to assess your level of programming ability and the general ways you approach fulfillment of 

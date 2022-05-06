@@ -12,6 +12,7 @@ plugins {
     kotlin("jvm") version "1.6.21"
     kotlin("plugin.serialization") version "1.6.21"
     id("org.jetbrains.kotlinx.kover") version "0.5.0"
+    id("com.github.johnrengelman.shadow") version "7.1.2"
     application
 }
 
@@ -50,6 +51,18 @@ application {
     mainClass.set("MainKt")
 }
 
+tasks.withType<Jar> {
+    manifest {
+        attributes["Main-Class"] = "MainKt"
+    }
+}
+
 tasks.withType<Test> {
     useJUnitPlatform()
+}
+
+// override the Jar created by default
+tasks.shadowJar {
+    archiveClassifier.set("")
+    archiveVersion.set("")
 }
