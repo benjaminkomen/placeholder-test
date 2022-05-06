@@ -33,6 +33,9 @@ Properties table and the Properties table, explicit. They safeguard against upda
 because my in-memory database implementation gave some errors when I tried to do. I don't think that's such a big deal,
 since it is more of an implementation detail of the database.
 
+The json response contains an additional attribute `type` which denotes whether the property is a warehouse or an office.
+This attribute can optionally be removed from the output, if required.
+
 ## Assignment instructions
 
 This test is designed to assess your level of programming ability and the general ways you approach fulfillment of 

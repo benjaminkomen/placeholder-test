@@ -9,8 +9,8 @@ val restAssuredVersion = "4.5.0"
 val junitVersion = "5.8.2"
 
 plugins {
-    kotlin("jvm") version "1.6.20"
-    kotlin("plugin.serialization") version "1.6.20"
+    kotlin("jvm") version "1.6.21"
+    kotlin("plugin.serialization") version "1.6.21"
     id("org.jetbrains.kotlinx.kover") version "0.5.0"
     application
 }
@@ -30,7 +30,7 @@ dependencies {
     implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
 
     implementation("com.h2database:h2:$h2Version")
-    implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.3.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.3.3")
     implementation("org.jetbrains.exposed:exposed-core:$exposedVersion")
     implementation("org.jetbrains.exposed:exposed-jdbc:$exposedVersion")
     implementation("org.jetbrains.exposed:exposed-java-time:$exposedVersion")
