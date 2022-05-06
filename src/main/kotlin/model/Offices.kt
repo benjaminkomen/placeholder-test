@@ -1,5 +1,6 @@
 package model
 
+import kotlinx.serialization.Serializable
 import org.jetbrains.exposed.sql.Table
 
 object Offices : Table() {
@@ -11,3 +12,13 @@ object Offices : Table() {
     val mailservice = bool("mailservice").nullable()
     override val primaryKey = PrimaryKey(property_id)
 }
+
+@Serializable
+data class Office(
+    val propertyId: Int,
+    val capacity: Int,
+    val kitchen: Boolean?,
+    val gym: Boolean?,
+    val parking: Boolean?,
+    val mailservice: Boolean?,
+)

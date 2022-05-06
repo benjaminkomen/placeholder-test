@@ -14,7 +14,12 @@ This will first build and then run the application. A webserver will
 start listening on http://localhost:8080.
 
 Now you can navigate to http://localhost:8080/properties?id=10 which will return
+the specific property with property_id 10 or a 404 response if it cannot be found.
 
+The database is preloaded with some sample data you can query:
+- a warehouse property with id 1
+- an office property with id 2
+- ...?
 
 ## Implementation notes
 I used the Kotlin framework Ktor (https://ktor.io/) which I had not used yet,

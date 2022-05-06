@@ -1,5 +1,6 @@
 package model
 
+import kotlinx.serialization.Serializable
 import org.jetbrains.exposed.sql.Table
 
 object Warehouses : Table() {
@@ -11,3 +12,13 @@ object Warehouses : Table() {
     val power_amps = integer("power_amps").nullable()
     override val primaryKey = PrimaryKey(property_id)
 }
+
+@Serializable
+data class Warehouse(
+    val propertyId: Int,
+    val squareFootage: Int,
+    val forklifts: Boolean?,
+    val parkingTrailer: Boolean?,
+    val fencedYard: Boolean?,
+    val powerAmps: Int?,
+)

@@ -1,5 +1,6 @@
 package model
 
+import kotlinx.serialization.Serializable
 import org.jetbrains.exposed.sql.Table
 
 object LoadingBays : Table() {
@@ -11,3 +12,13 @@ object LoadingBays : Table() {
     val leveler = bool("leveler")
     override val primaryKey = PrimaryKey(bay_id)
 }
+
+@Serializable
+data class LoadingBay(
+    val bayId: Int,
+    val propertyId: Int,
+    val truckLevel: Boolean,
+    val trailer53: Boolean,
+    val dockLock: Boolean,
+    val leveler: Boolean,
+)
