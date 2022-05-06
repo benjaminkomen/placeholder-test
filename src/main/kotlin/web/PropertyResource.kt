@@ -16,8 +16,9 @@ fun Route.property(propertyService: PropertyService) {
                 propertyService.getProperty(propertyId)
                     ?.let { call.respond(it) }
                     ?: call.respond(HttpStatusCode.NotFound)
+            } else {
+                call.respond(propertyService.getAll())
             }
-            call.respond(propertyService.getAll())
         }
 
         get("/{id}") {

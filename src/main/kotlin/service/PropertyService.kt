@@ -4,14 +4,11 @@ import model.*
 import org.jetbrains.exposed.sql.JoinType
 import org.jetbrains.exposed.sql.ResultRow
 import org.jetbrains.exposed.sql.select
-import org.jetbrains.exposed.sql.selectAll
 import service.DatabaseFactory.dbQuery
 
 class PropertyService {
 
-    suspend fun getAll(): List<Property> = dbQuery {
-        Properties.selectAll().map { toProperty(it) }
-    }
+    suspend fun getAll(): List<Property> = emptyList() // Not implemented, outside of scope
 
     suspend fun getProperty(propertyId: Int): Property? = dbQuery {
         Properties.join(Offices, JoinType.LEFT, Properties.property_id, Offices.property_id)

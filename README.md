@@ -13,18 +13,25 @@ Navigate to the root folder of this project in your terminal and execute:
 This will first build and then run the application. A webserver will
 start listening on http://localhost:8080.
 
-Now you can navigate to http://localhost:8080/properties?id=10 which will return
+Now you can navigate to http://localhost:8080/properties?id=10 or http://localhost:8080/properties/10 which will return
 the specific property with property_id 10 or a 404 response if it cannot be found.
 
 The database is preloaded with some sample data you can query:
 - a warehouse property with id 1
 - an office property with id 2
-- ...?
 
 ## Implementation notes
 I used the Kotlin framework Ktor (https://ktor.io/) which I had not used yet,
 but have heard of previously on conferences and twitter and this seemed like a good
 opportunity to try it.
+
+I used [this started project](https://github.com/raharrison/kotlin-ktor-exposed-starter) as a starting point, so I wouldn't
+have to reinvent the wheel from scratch.
+
+The `schema.sql` mentions foreign key constrains which make the foreign key relation between the four other tables than the
+Properties table and the Properties table, explicit. They safeguard against updating or deleting. I did not implement those,
+because my in-memory database implementation gave some errors when I tried to do. I don't think that's such a big deal,
+since it is more of an implementation detail of the database.
 
 ## Assignment instructions
 
