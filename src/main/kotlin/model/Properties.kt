@@ -21,16 +21,17 @@ object Properties : Table() {
 }
 
 @Serializable
-data class Property(
-    val propertyId: Int,
-    val name: String,
-    val address: String,
-    val city: String,
-    val province: String,
-    val postal: String,
-    val access247: Boolean?,
-    val utilitiesIncluded: Boolean?,
+sealed class Property {
+    abstract val propertyId: Int
+    abstract val name: String
+    abstract val address: String
+    abstract val city: String
+    abstract val province: String
+    abstract val postal: String
+    abstract val access247: Boolean?
+    abstract val utilitiesIncluded: Boolean?
+
     @Serializable(with = LocalDateSerializer::class)
-    val availability: LocalDate?,
-    val cost: Int?,
-)
+    abstract val availability: LocalDate?
+    abstract val cost: Int?
+}

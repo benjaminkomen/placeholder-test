@@ -2,6 +2,8 @@ package model
 
 import kotlinx.serialization.Serializable
 import org.jetbrains.exposed.sql.Table
+import util.LocalDateSerializer
+import java.time.LocalDate
 
 object Offices : Table() {
     val property_id = integer("property_id")
@@ -15,10 +17,20 @@ object Offices : Table() {
 
 @Serializable
 data class Office(
-    val propertyId: Int,
+    override val propertyId: Int,
+    override val name: String,
+    override val address: String,
+    override val city: String,
+    override val province: String,
+    override val postal: String,
+    override val access247: Boolean?,
+    override val utilitiesIncluded: Boolean?,
+    @Serializable(with = LocalDateSerializer::class)
+    override val availability: LocalDate?,
+    override val cost: Int?,
     val capacity: Int,
     val kitchen: Boolean?,
     val gym: Boolean?,
     val parking: Boolean?,
     val mailservice: Boolean?,
-)
+) : Property()
